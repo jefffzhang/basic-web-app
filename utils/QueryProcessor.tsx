@@ -27,6 +27,13 @@ export default function QueryProcessor(query: string): string {
     return `The sum of ${num1} and ${num2} is ${sum}.`; // Return the answer
   }
 
+  const match2 = query.match(/which of the following numbers is the largest: (.+)\?/i);
+  if (match2) {
+    const numbers = match2[1].split(', ').map(Number);
+    const largest = Math.max(...numbers);
+    return `The largest number is ${largest}.`;
+  }
+
 
   return "";
 }
