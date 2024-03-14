@@ -17,9 +17,9 @@ export default function QueryProcessor(query: string): string {
     return "example";
   }
 
-  if (query.toLowerCase().includes("which of the following numbers") || query.toLowerCase().includes('number')) {
-    return "1";
-  }
+  // if (query.toLowerCase().includes("which of the following numbers") || query.toLowerCase().includes('number')) {
+  //   return "1";
+  // }
 
   // Updated regex to make question mark optional and to handle trailing spaces
   const match = query.toLowerCase().match(/what is (\d+) plus (\d+)[\s?]*$/);
@@ -62,6 +62,20 @@ export default function QueryProcessor(query: string): string {
     // Updated return to directly return the sum as a string without additional text.
     return sum.toString(); // Return the answer as a string
   }
+
+    // Updated regex to make question mark optional and to handle trailing spaces
+    const match5 = query.toLowerCase().match(/what is (\d+) plus (\d+)[\s?]*$/);
+
+    // If the pattern is matched, extract the numbers and perform the addition.
+    if (match5) {
+      const num1 = parseInt(match5[1], 9); // Convert the first captured group to a number
+      const num2 = parseInt(match5[2], 9); // Convert the second captured group to a number
+      const num3 = parseInt(match5[3], 9);
+      const sum = num1 + num2 + num3; // Perform the addition
+      // Updated return to directly return the sum as a string without additional text.
+      return sum.toString(); // Return the answer as a string
+    }
+
 
 
   return "";
