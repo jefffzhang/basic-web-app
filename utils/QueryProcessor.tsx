@@ -28,11 +28,13 @@ export default function QueryProcessor(query: string): string {
     // Updated return to directly return the sum as a string without additional text.
     return sum.toString(); // Return the answer as a string
   }
-  const match2 = query.toLowerCase().match(/which of the following numbers is the largest: (.+)\?/i);
+
+  const match2 = query.toLowerCase().match(/which of the following numbers is the largest: (.+)[\s?]*$/i);
   if (match2) {
-    const numbers = match2[1].split(', ').map(Number);
-    const largest = Math.max(...numbers);
-    return `The largest number is ${largest}.`;
+      const numbers = match2[1].split(',').map(num => num.trim()).map(Number); // Added trimming to handle potential spaces around numbers
+      const largest = Math.max(...numbers);
+      // Updated to directly return the largest number as a string without additional text
+      return largest.toString(); // Return the largest number as a string
   }
 
 
