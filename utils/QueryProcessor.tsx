@@ -76,6 +76,17 @@ export default function QueryProcessor(query: string): string {
       return sum.toString(); // Return the answer as a string
     }
 
+    const match6 = query.toLowerCase().match(/what is (\d+) to the power of (\d+)[\s?]*$/);
+
+    // If the pattern is matched, extract the numbers and perform the addition.
+    if (match6) {
+      const num1 = parseInt(match6[1], 10); // Convert the first captured group to a number
+      const num2 = parseInt(match6[2], 10); // Convert the second captured group to a number
+      const sum = num1**num2; // Perform the addition
+      // Updated return to directly return the sum as a string without additional text.
+      return sum.toString(); // Return the answer as a string
+    }
+
 
 
   return "";
