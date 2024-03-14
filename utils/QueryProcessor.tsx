@@ -37,6 +37,17 @@ export default function QueryProcessor(query: string): string {
       return largest.toString(); // Return the largest number as a string
   }
 
+  const match3 = query.toLowerCase().match(/which of the following numbers is both a square and a cube: (.+)[\s?]*$/i);
+  if (match3) {
+    const numbers = match3[1].split(',').map(num => num.trim()).map(Number); // Split and clean numbers
+    const perfectSixth = numbers.find(num => {
+      const sixthRoot = Math.pow(num, 1/6);
+      return sixthRoot === Math.floor(sixthRoot); // Check if the sixth root is an integer
+    });
+    // Return the found number or a message if none are found
+    return perfectSixth !== undefined ? perfectSixth.toString() : "None of the numbers are both a square and a cube.";
+  }
+
 
   return "";
 }
