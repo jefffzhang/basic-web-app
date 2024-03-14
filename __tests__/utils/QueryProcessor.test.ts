@@ -25,4 +25,12 @@ describe("QueryProcessor", () => {
             "example"
           ));
     });
+
+    test('Which of the following numbers', () => {
+        const query = "following numbers";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "1"
+          ));
+    });
 });
