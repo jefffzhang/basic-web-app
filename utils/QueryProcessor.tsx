@@ -48,6 +48,17 @@ export default function QueryProcessor(query: string): string {
     return perfectSixth !== undefined ? perfectSixth.toString() : "None of the numbers are both a square and a cube.";
   }
 
+  const match4 = query.toLowerCase().match(/what is (\d+) multiplied by (\d+)[\s?]*$/);
+
+  // If the pattern is matched, extract the numbers and perform the addition.
+  if (match4) {
+    const num1 = parseInt(match4[1], 10); // Convert the first captured group to a number
+    const num2 = parseInt(match4[2], 10); // Convert the second captured group to a number
+    const sum = num1 * num2; // Perform the addition
+    // Updated return to directly return the sum as a string without additional text.
+    return sum.toString(); // Return the answer as a string
+  }
+
 
   return "";
 }
