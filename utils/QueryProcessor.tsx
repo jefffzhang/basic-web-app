@@ -17,6 +17,10 @@ export default function QueryProcessor(query: string): string {
     return "example";
   }
 
+  if (query.toLowerCase().includes("which of the following numbers")) {
+    return "example";
+  }
+
   // Updated regex to make question mark optional and to handle trailing spaces
   const match = query.toLowerCase().match(/what is (\d+) plus (\d+)[\s?]*$/);
 
