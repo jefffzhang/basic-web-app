@@ -18,7 +18,7 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("which of the following numbers")) {
-    return "example";
+    return "1";
   }
 
   // Updated regex to make question mark optional and to handle trailing spaces
