@@ -7,5 +7,10 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
+  // Check for a query asking about the andrewID
+  if (query.toLowerCase().includes("what is your andrewid") || query.toLowerCase().includes("your andrewid")) {
+    return "example";
+  }
+
   return "";
 }
