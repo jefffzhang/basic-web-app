@@ -17,16 +17,17 @@ export default function QueryProcessor(query: string): string {
     return "example";
   }
 
-  const match = query.toLowerCase().match(/what is (\d+) plus (\d+)\?/);
+  // Updated regex to make question mark optional and to handle trailing spaces
+  const match = query.toLowerCase().match(/what is (\d+) plus (\d+)[\s?]*$/);
 
   // If the pattern is matched, extract the numbers and perform the addition.
   if (match) {
     const num1 = parseInt(match[1], 10); // Convert the first captured group to a number
     const num2 = parseInt(match[2], 10); // Convert the second captured group to a number
     const sum = num1 + num2; // Perform the addition
-    return `The sum of ${num1} and ${num2} is ${sum}.`; // Return the answer
+    // Updated return to directly return the sum as a string without additional text.
+    return sum.toString(); // Return the answer as a string
   }
-
   const match2 = query.toLowerCase().match(/which of the following numbers is the largest: (.+)\?/i);
   if (match2) {
     const numbers = match2[1].split(', ').map(Number);
