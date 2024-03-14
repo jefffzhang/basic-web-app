@@ -17,6 +17,16 @@ export default function QueryProcessor(query: string): string {
     return "example";
   }
 
-  
+  const match = query.toLowerCase().match(/what is (\d+) plus (\d+)\?/);
+
+  // If the pattern is matched, extract the numbers and perform the addition.
+  if (match) {
+    const num1 = parseInt(match[1], 10); // Convert the first captured group to a number
+    const num2 = parseInt(match[2], 10); // Convert the second captured group to a number
+    const sum = num1 + num2; // Perform the addition
+    return `The sum of ${num1} and ${num2} is ${sum}.`; // Return the answer
+  }
+
+
   return "";
 }
